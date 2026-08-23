@@ -1,0 +1,27 @@
+# The Annotated Transformer (2022 version)
+# https://nlp.seas.harvard.edu/annotated-transformer/
+#
+# Install:  VIRTUAL_ENV=$PWD/.venv ~/.local/bin/uv pip install -r requirements.txt
+# Then:     ./.venv/bin/python -m spacy download de_core_news_sm
+#           ./.venv/bin/python -m spacy download en_core_web_sm
+#
+# WARNING: do NOT run "uv sync" / "uv run" in this folder.
+# pyproject.toml has empty dependencies, so uv would delete all of this.
+#
+# The upstream requirements.txt pins torch==1.11.0+cu113, torchtext==0.12,
+# torchdata==0.3.0. Those cannot run on this box (Blackwell GB10 needs CUDA 13,
+# and torchtext/torchdata are archived projects). Versions below are the
+# modern equivalents that do work here.
+
+ipykernel
+torch
+pandas
+altair
+spacy
+GPUtil
+datasets
+
+# torchtext / torchdata are intentionally missing -- see note above.
+# The notebook uses torchtext in only 3 places (dataset, vocab, to_map_style_dataset).
+# Uncomment this if you want the Multi30k dataset from HuggingFace instead:
+# datasets
